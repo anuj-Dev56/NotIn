@@ -22,7 +22,7 @@
 
 *{
   margin: 0 0 0 0;
-  transition: .5s linear;
+
 }
 
 body{
@@ -374,7 +374,10 @@ justify-content: center;
   border-radius: 20px;
   animation: .3s MsgIn linear;
   transition: 1s ease;
-  overflow: scroll;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
@@ -417,3 +420,11 @@ padding: 0px;
 .Time{
   color: lightgreen;
 }
+
+.message{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: nowrap;
+ max-width: 250px;
+ overflow: hidden;
+    }
