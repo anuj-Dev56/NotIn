@@ -136,7 +136,7 @@ function loadMessages() {
             messageElement.classList.add('message'); // Optional: Add a class for styling
             messageElement.innerHTML = `<span class="User">@${messageData.user.split("@")[0]}<span class="Time">
              ${messageData.timestamp}
-            </span></span>: ${messageData.message}`;
+            </span></span>: ${messageData.message}</div>`;
             
             
             chatMessages.appendChild(messageElement);
@@ -150,6 +150,19 @@ function loadMessages() {
 // Set up event listener for the send button
 document.querySelector('#SendBtn').addEventListener('click', sendMessage);
 
+// sound functions
+
+function playSendSound() {
+    const sound = document.getElementById('sendSound');
+    sound.play();
+}
+
+
+function ErrorSound() {
+  const sound = document.getElementById('ErrorSound');
+  sound.play();
+}
+
 
 // Send message function
 function sendMessage() {
@@ -158,6 +171,20 @@ function sendMessage() {
 
 var min = new Date().getMinutes();
 var hr = new Date().getHours();
+var mode;
+
+if (hr > 12) {
+  mode = "pm"
+} else {
+  mode = "am"
+}
+
+if (hr > 12) {
+    hr = `${hr - 12}`;
+  } else if (hr < 12){
+    hr = `${hr}`;
+  }
+
 if (hr < 10) {
   hr = `0${hr}`;
 }
@@ -165,7 +192,7 @@ if (hr < 10) {
 if (min < 10) {
   min = `0${min}`;
 }
-var time = `${hr}:${min}`;
+var time = `${hr}:${min}${mode}`;
 
 
 
@@ -179,7 +206,18 @@ var time = `${hr}:${min}`;
         });
         document.querySelector("#Sender").value = '';
     }
+
+
+if (document.querySelector("#Sender").value = "") {
+  ErrorSound();
+} else {
+  playSendSound()
 }
+    
+}
+
+
+
 
 
 // display active users 
