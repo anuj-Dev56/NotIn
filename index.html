@@ -160,10 +160,13 @@
   <div class="Chat_input">
     <div class="Chat_con">
 <div class="Textarea">
-     <input type="text" id="Sender">
+     <input type="text" id="Sender" maxlength="50">
        <button id="SendBtn" o>
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
       </button>
+      <audio id="ErrorSound" src="pop.mp3" preload="auto"></audio>
+       <audio id="sendSound" src="pop.mp3" preload="auto"></audio>
+
 
 </div>
     </div>
@@ -173,4 +176,5 @@
 <script src="./Avatar.js"></script>
   <script src="main.js"></script>
 </body>
-</html>
+       </html>
+         
