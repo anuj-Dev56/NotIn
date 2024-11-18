@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Login</title>
+
+<script type="module" src="./Js/DataBase.js"></script>
+
+<script type="module" defer src="./Register.js"></script>
+ 
+ <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+ 
+    <div class="Login_Con">
+      <div class="Input_Filed">
+         
+        <Input placeholder="Name..." id="User_Name">
+        
+        <Input placeholder="Email...." id="User_Email">
+        
+          <input type="password" id="password" placeholder="Password...."/>
+          
+      </div>
+      <div class="Auth_Options">
+       
+        <button class="Login_user" id="Lg">
+         LogIn With Google
+        </button>
+      </div>
+      
+    <div class="error">
+        
+    </div>
+      <div class="btn_Login">
+        <button type="submit" class="Login">
+        SignUp
+        </button>
+        
+      </div>
+      <div>
+    <a >Continue As Guest ?</a>
+</div>
+    </div>
+    
+  <div class="loaderBox">
+    <div class="loader">
+    </div>
+  </div>
+  
+  <div class="loaderBox">
+    <div class="loader">
+    </div>
+  </div>
+
+
+   <div class="Profile_Container">
+   <div onclick="CloseNav()" class="Cancel">
+     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+   </div>
+<div class="Con">
+       <div class="Image">
+         <img src="./Smash.jpeg">
+       </div>
+       <div class="Names">
+         <span>name: </span><p class="name"></p>
+       </div>
+       <div class="Emails">
+         <span>email: </span><p class="email_box"></p>
+       </div>
+       <div class="LogOut">
+         <button class="google">SignOut</button>
+       </div>
+</div>
+   </div>
+
+    
+<div class="main">
+   <header>
+        <div class="Header">
+            <div class="logo">NotIn</div>
+            <div class="Navbar">
+<div onclick="OpenNavOrCloseNav()">
+             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+</div>
+            </div>
+        </div>
+   </header> 
+   
+  <div class="Title">
+      ChatRoom 
+     </div>
+     
+   <div class="CreateOrJoin">
+<div>
+  <button onclick="alertNow()" class="Create_Btn">
+    Create
+  </button>
+  <button onclick="alertNow()" class="Join">
+    Join
+  </button>
+</div>
+   </div>
+   
+   
+     <div class="Title">
+       Globel Chat
+     </div>
+   
+   <div class="Chat_Groups">
+      <div onclick="Globel_chats()" class="Group">
+      <div class="image">
+        Gl
+      </div>
+      
+      <div class="Status">
+       <span class="state"
+       style="
+       color: #fff;
+       "
+       >Active<span>
+      </div>
+      </div>
+</div>
+
+     <div class="Title">
+       Channels 
+     </div>
+
+   </div>
+</div>
+
+
+
+<!-- chat application starts here -->
+
+<div class="Chat_Box">
+<div class="Chat_Active">
+       <div onclick="CloseGlobel()" class="Cancel">
+     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+   </div>
+   
+   <div id="activeUsersCount">
+     
+   </div>
+   
+    <div class="chat_area">
+   
+ </div>
+  
+  
+</div>
+
+  <!-- Bottom Submit bar -->
+  <div class="Chat_input">
+    <div class="Chat_con">
+<div class="Textarea">
+     <input type="text" id="Sender">
+       <button id="SendBtn" o>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
+      </button>
+
+</div>
+    </div>
+  </div>
+</div>
+
+<script src="./Avatar.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

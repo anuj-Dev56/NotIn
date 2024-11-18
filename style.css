@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+  
+  /* Additional Colours*/
+  
+  --paynes-gray: #5B606Aff;
+  --cambridge-blue: #88B3B4ff;
+  --gunmetal: #2D3342ff;
+  --platinum: #DDDEDEff;
+  --gunmetal-2: #292F3Fff;
+  
+  /* main colors */
+  
+  --picton-blue: #13AEF2ff;
+  --raisin-black: #1F232Fff;
+  --input: #12141B;
+  --tangerine: #F18303ff;
+  --gunmetal: #292F3Fff;
+  --aquamarine: #56EDB3ff;
+}
+
+*{
+  margin: 0 0 0 0;
+  transition: .5s linear;
+}
+
+body{
+  background: var(--raisin-black);
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+
+.main{
+    display: none;
+}
+
+/* loader */ 
+.loaderBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: none;
+}
+
+.loader{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid #000000;
+  border-top: 3px solid var(--aquamarine);
+  animation: 1s load linear infinite;
+}
+
+@keyframes load {
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+transform: rotate(
+90deg);
+  }
+  75%{
+    transform: rotate(180deg);
+  } 
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.Login_Con{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.Login_Con input{
+display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: var(--input);
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+}
+
+.Login_Con a{
+  color: var(--paynes-gray);
+  font-size: 10px;
+  text-decoration: underline; 
+}
+
+.Login_Con button, .google{
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+  color: #000;
+  background: var(--aquamarine);
+  box-shadow: 1px 1px 10px var(--aquamarine);
+}
+
+
+.Login_Con .LgG{
+background: var(--picton-blue);
+}
+
+.Header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+padding:  16px;
+}
+
+header{
+  width: 100%;
+  height: 60px;
+  background: var(--input);
+}
+
+/* setting up profile */
+
+span{
+  color: black;
+}
+.Con {
+  max-width: 200px;
+  min-height: 270px;
+  background: var(--input);
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 50px;
+  column-gap: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  opacity: 0;
+  animation: .1s LoadProfile linear;
+  transition: .2s linear;
+}
+
+
+@keyframes LoadProfile {
+  0%{
+    max-width: 0;
+    min-height: 0;
+    border-radius: 0px;
+  }
+  100%{
+    max-width: 200px;
+    min-height: 270px;
+    border-radius: 10px;
+  }
+}
+
+.Con div{
+  margin: 20px;
+}
+.Profile_Container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-radius: 10px;
+}
+
+.Profile_Container img{
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.Profile_Container .Cancel{
+  margin-top: 20px;
+  animation: .3s Cross_Open linear;
+}
+
+
+@keyframes Cross_Open { 
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  75%{
+    opacity: 0.3;
+  }
+  100%{
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+
+
+/* profile names */ 
+
+.Emails, .Names{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  background: var(--picton-blue);
+  border-radius: 10px;
+}
+
+.CreateOrJoin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 25px;
+}
+
+.CreateOrJoin button{
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: var(--picton-blue);
+  padding: 10px;
+  color: #fff;
+}
+
+.CreateOrJoin .Create_Btn{
+width: 120px;
+}
+
+.CreateOrJoin .Join{
+  background: var(--tangerine);
+  width: 120px;
+}
+
+.Title{
+  margin: 20px;
+  font-weight: 600;
+}
+
+/* groups */
+
+
+.Chat_Groups{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ margin-top: 20px;
+ 
+}
+
+.Group{
+ width: 90%;
+ height: 100px;
+ background: var(--input);
+ border-radius: 10px;
+ overflow: hidden;
+}
+
+.Status{
+  position: relative;
+  float: right;
+  bottom: 0;
+  color: black;
+  padding: 20px;
+  top:  -12px;
+  background: var(--tangerine);
+  padding: 5px;
+  border-radius: 8px;
+  margin: 10px;
+  
+}
+
+
+.Group .image{
+  width: 40px;
+  height: 40px;
+  background: var(--platinum);
+  margin: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #000;
+  font-size: 10px;
+}
+
+
+
+.Chat_Box{
+  width: 100%;
+  height: 100vh;
+  background: #42445A00;
+  position: fixed;
+  display: none;
+}
+
+
+.Chat_con{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 25px;
+  left: 20px;
+}
+
+.Chat_con input, .Chat_con button{
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.Chat_con input{
+  background: var(--input);
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+}
+
+.Chat_con button{
+  background: var(--aquamarine);
+  width: 40px;
+  padding: 5px;
+  position: fixed;
+  bottom: 37px;
+  right: 60px;
+}
+
+
+.Chat_con button svg {
+  display: flex;
+justify-content: center;
+  align-items: center;
+}
+
+
+.chat_area{
+  width: 90%;
+  max-height: 66%;
+  background: transparent;
+  margin: 20px;
+  margin-top: 90px;
+  overflow: scroll;
+}
+
+.chat_area div{
+  margin: 10px;
+  padding: 10px;
+  max-height: 50px;
+  background: var(--gunmetal);
+  border-radius: 20px;
+  animation: .3s MsgIn linear;
+  transition: 1s ease;
+  overflow: scroll;
+}
+
+
+@keyframes MsgIn {
+  0%{
+    opacity: none;
+padding: 0px;
+  }
+  100%{
+    opacity: 1;
+    padding: 10px;
+  }
+}
+
+.User{
+  color: plum;
+}
+.Chat_Box .Cancel{
+  display: flex;
+  position: absolute;
+  float: right;
+  margin: 30px;
+  flex-direction: column;
+}
+
+.Chat_Box #activeUsersCount{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  right: 30px;
+  top: 20px;
+  color: #000;
+  padding: 15px;
+  background: var(--platinum);
+  border-radius: 10px;
+}
+
+
+.Time{
+  color: lightgreen;
+}
