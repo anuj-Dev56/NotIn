@@ -26,7 +26,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getDatabase(app);
 auth.languageCode = 'it';
-
+let Data;
 const provider = new GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 provider.setCustomParameters({ 'login_hint': 'user@example.com' });
@@ -117,6 +117,24 @@ async function logout() {
 
 // load massage 
 
+function ErrorSound() {
+  const sound = document.getElementById('ErrorSound');
+  sound.play();
+}
+
+function checkPing(messageData) {
+ if (messageData.message.includes("@")) {
+   console.log("ping Detected")
+ }
+ 
+}
+
+
+function user(Uid) {
+  // Tab to edit
+}
+
+
 // Function to load and display chat messages
 function loadMessages() {
     const chatMessages = document.querySelector(".chat_area");
@@ -130,14 +148,17 @@ function loadMessages() {
 
     // Listen for new messages added to the database
     onChildAdded(messagesRef, (snapshot) => {
+      
         const messageData = snapshot.val();
+       
         if (messageData) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message'); // Optional: Add a class for styling
             messageElement.innerHTML = `<span class="User">@${messageData.user.split("@")[0]}<span class="Time">
              ${messageData.timestamp}
             </span></span>: ${messageData.message}</div>`;
-            
+   
+   checkPing(messageData);
             
             chatMessages.appendChild(messageElement);
 
@@ -154,14 +175,10 @@ document.querySelector('#SendBtn').addEventListener('click', sendMessage);
 
 function playSendSound() {
     const sound = document.getElementById('sendSound');
+    sound.volume = 0.6;
     sound.play();
 }
 
-
-function ErrorSound() {
-  const sound = document.getElementById('ErrorSound');
-  sound.play();
-}
 
 
 // Send message function
@@ -247,10 +264,89 @@ function trackUserPresence() {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     trackUserPresence();
+    GetServerList()
   }
 });
 
 
+
+function createServerNow() {
+  console.log("ndn");
+  document.querySelector(".main").style.display = "none";
+  document.querySelector(".Create_Block").style.display = "block"
+  
+  
+}
+
+
+function _create_block_btn_func() {
+    const alpha = "abcyd";
+    const num = "1537";
+    const alphaR = alpha.charAt(Math.random() * alpha.length);
+    const numR = num.charAt(Math.random() * num.length);
+    
+const server_Name = document.querySelector(".Server_Name").value;
+
+const serverArry = [];
+
+serverArry.push(`${"&sr=" + alphaR + numR}`);
+
+localStorage.setItem(`Servers`, `${"&sr=" + alphaR + numR}`)
+
+const user = auth.currentUser;
+  
+const serverRef = push(ref(database, user.uid + "_Server"));
+  
+  set(serverRef, {
+    userId: user.uid,
+    owner: user.email,
+    name: server_Name,
+    serverId:`${user.uid}${"&sr=" + alphaR + numR}`
+  });
+  
+  document.querySelector(".main").style.display = "block";
+  document.querySelector(".Create_Block").style.display = "none"
+}
+
+
+function GetServerList() {
+  const user = auth.currentUser;
+  const serverRef = ref(database, user.uid + "_Server")
+  onChildAdded(serverRef, (snapshot) => {
+    const serverData = snapshot.val();
+    if (serverData) {
+      const div = document.createElement("div");
+      div.classList.add("Channal_list");
+      div.innerHTML = `<div class="Group Group_Channels">
+            <div class="image">
+              ${serverData.name}
+            </div>
+            
+            <div class="Status" style="background: royalblue;">
+             <span class="state"
+             style="
+             color: #fff;
+             "
+             >Delete ♻️<span>
+            </div>
+            </div>`;
+      
+      const channels = document.querySelector(".Channels");
+      channels.append(div);
+    }
+    console.log(serverData);
+    
+  })
+}
+
+function close_create_block() {
+  document.querySelector(".main").style.display = "block";
+  document.querySelector(".Create_Block").style.display = "none"
+}
+
+function _group_Channels_Open_system() {
+  alert("If Created Just Now Wait For SomeTime")
+}
 
 
 // Event listeners for Google login, logout, and sending messages
@@ -259,10 +355,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const googleBtn = document.querySelector(".Login_user");
   const logoutBtn = document.querySelector(".google");
   const sendBtn = document.querySelector('#SeandBtn');
-
+  const createServerBtn = document.querySelector(".Create_Btn");
+const cancel_Create_block = document.querySelector(".Cancel_Create_block");
+const group_Channels = document.querySelector(".Group_Channels");
+const _create_block_btn = document.querySelector("._create_block_btn")
 
   if (googleBtn) {
     googleBtn.addEventListener('click', googlePopUp);
+  }
+  
+  if (createServerBtn) {
+    createServerBtn.addEventListener('click', createServerNow);
   }
 
   if (logoutBtn) {
@@ -272,5 +375,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sendBtn) {
     sendBtn.addEventListener('click', sendMessage);
   }
+  
+  if (cancel_Create_block) {
+    cancel_Create_block.addEventListener('click', close_create_block)
+  }
+  
+  if (_create_block_btn) {
+    _create_block_btn.addEventListener('click', _create_block_btn_func)
+  }
+  if (group_Channels) {
+    group_Channels.addEventListener('click', _group_Channels_Open_system)
+  }
 });
 
+        
