@@ -427,4 +427,56 @@ padding: 0px;
  flex-wrap: nowrap;
  max-width: 250px;
  overflow: hidden;
-    }
+}
+
+
+input{
+display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: var(--input);
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  color: #fff;
+}
+
+
+button{
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: var(--picton-blue);
+  padding: 10px;
+  color: #fff;
+}
+
+
+.Create_Block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width:100%;
+  height: 100vh;
+  display: none;
+}
+
+.ConTainer_Block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.Channal_list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
